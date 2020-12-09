@@ -1,35 +1,15 @@
-# reference: https://mccormickml.com/2019/05/14/BERT-word-embeddings-tutorial/
 # reference: http://linanqiu.github.io/2015/10/07/word2vec-sentiment/
-import os
+from data_handling import Data
+import multiprocessing
 import pandas as pd
 import numpy as np
 from nltk.tokenize import RegexpTokenizer
 from gensim.models.doc2vec import Doc2Vec, TaggedDocument
-from sklearn.pipeline import Pipeline
-from gensim.sklearn_api import W2VTransformer
 from sklearn.naive_bayes import GaussianNB
-import multiprocessing
-from gensim.models import Word2Vec
-# try:
-#     from transformers import BertTokenizer
-# except :
-#     os.system('pip install transformers')
-#     from transformers import BertTokenizer
 
-train_df = pd.read_csv('data/sentiment_dataset_train.csv')
-# print(list(train_df.columns)) # ['id', 'review', 'rating']
-# print("Null value check")
-# print(train_df.isnull().sum()) # no null values
-
-dev_df = pd.read_csv('data/sentiment_dataset_dev.csv')
-# print(list(train_df.columns)) # ['id', 'review', 'rating']
-# print("Null value check")
-# print(train_df.isnull().sum()) # no null values
-
-labels = np.loadtxt('data/sentiment_ratings_labels.txt',dtype=str).reshape(-1)
-
-train_x, train_y = train_df[['review']], train_df[['rating']].applymap(str)
-dev_x, dev_y = dev_df[['review']], dev_df[['rating']].applymap(str)
+data = Data()
+train_x, train_y = data.getTrainData()
+dev_x, dev_y = data.getDevData()
 
 # Preprocessing
 print("Preprocessing Started")
