@@ -1,0 +1,3 @@
+__pycache__/
+BERT_model/config.json
+BERT_model/pytorch_model.bin
