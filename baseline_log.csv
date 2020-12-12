@@ -1,0 +1,4 @@
+,Interval,Time
+0,Training Doc2Vec,0:09:05
+1,Generating Embedded Vectors for Development Set,0:02:14
+2,Training GaussianNB,0:00:00
