@@ -78,7 +78,7 @@ test_x = data.getTestData()
 # Tokenizing
 print("Tokenization Started")
 dev_set = generate_dataset(dev_x, ratings = dev_y)
-test_set = generate_dataset(dev_x, is_test = True)
+test_set = generate_dataset(test_x, is_test = True)
 
 # Create DataLoaders for Training and Development Sets.
 # From the referenced article, a batch size of 16 or 32 is recommended
